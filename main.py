@@ -11,7 +11,6 @@ root.title("Py-Calculator")
 root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 root.resizable(width=False, height=False)
 
-
 # Variables
 num_1 = ""
 num_2 = ""
@@ -21,7 +20,6 @@ chosen_method = ""
 editing_first_number = True
 editing_second_number = False
 result = 0
-
 result_text = Label(root, text="",width=50,height=30)
 result_text.place(rely=0)
 
@@ -73,7 +71,6 @@ def add_four_to_str():
         num_2 += "4"
         result_text.config(text=num_2)
 
-
 def add_five_to_str():
     global num_1
     global num_2
@@ -85,7 +82,6 @@ def add_five_to_str():
     else:
         num_2 += "5"
         result_text.config(text=num_2)
-
 
 def add_six_to_str():
     global num_1
@@ -99,7 +95,6 @@ def add_six_to_str():
         num_2 += "6"
         result_text.config(text=num_2)
 
-
 def add_seven_to_str():
     global num_1
     global num_2
@@ -111,7 +106,6 @@ def add_seven_to_str():
     else:
         num_2 += "7"
         result_text.config(text=num_2)
-
 
 def add_eight_to_str():
     global num_1
@@ -125,7 +119,6 @@ def add_eight_to_str():
         num_2 += "8"
         result_text.config(text=num_2)
 
-
 def add_nine_to_str():
     global num_1
     global num_2
@@ -138,7 +131,6 @@ def add_nine_to_str():
         num_2 += "9"
         result_text.config(text=num_2)
 
-
 def add_zero_to_str():
     global num_1
     global num_2
@@ -150,12 +142,6 @@ def add_zero_to_str():
     else:
         num_2 += "0"
         result_text.config(text=num_2)
-
-
-
-
-
-
 
 def clear_all_numbers():
     global num_1
@@ -190,8 +176,6 @@ def add_period():
     else:
         pass
 
-    
-
 def set_method_to_divide():
     global chosen_method
     global editing_first_number
@@ -211,7 +195,6 @@ def set_method_to_percent():
 
     result_text.config(text="")
     chosen_method = "percent"
-
 
 def set_method_to_add():
     global chosen_method
@@ -243,6 +226,18 @@ def set_method_to_times():
 
     result_text.config(text="")
     chosen_method = "times"
+
+def flip_negative():
+    global num_1
+    global num_2
+    if editing_first_number:
+        num_1 = "".join("-"+ num_1)
+        result_text.config(text=num_1)
+    else:
+        num_2 = "".join("-"+ num_2)
+        result_text.config(text=num_2)
+
+# Mathematical Functions
 def add():
     global num_2
     global num_1
@@ -273,11 +268,6 @@ def percent():
     global result
     result = float(num_1) * float(num_2) / 100
 
-
-
-
-
-
 def equals():
     global result
     global editing_first_number
@@ -298,12 +288,6 @@ def equals():
 
 
     result_text.config(text=str(result))
-
-
-
-
-
-
 
 # Buttons
 
@@ -360,7 +344,7 @@ times_button.place(relx=0.75, rely=0.725, anchor=tk.SW)
 ac_button = tk.Button(root, text="AC", font=("Nunito Sans", 10), height=3, width=10, command=clear_all_numbers)
 ac_button.place(relx=0, rely=0.64, anchor=tk.SW)
 
-change_sign_button = tk.Button(root, text="+/-", font=("Nunito Sans", 10), height=3, width=10)
+change_sign_button = tk.Button(root, text="+/-", font=("Nunito Sans", 10), height=3, width=10, command=flip_negative)
 change_sign_button.place(relx=0.25, rely=0.64, anchor=tk.SW)
 
 percent_button = tk.Button(root, text="%",  font=("Nunito Sans", 10),height=3, width=10, command=set_method_to_percent)
