@@ -1,9 +1,8 @@
 from constants import *
 import tkinter as tk
-from tkinter import *
-import ttkbootstrap as tb
+from tkinter import Label
 from ttkbootstrap import Style
-from PIL import *
+
 
 # Window Properties
 style = Style(theme="superhero")
@@ -195,6 +194,12 @@ def add_period():
 
 def set_method_to_divide():
     global chosen_method
+    global editing_first_number
+    global editing_second_number
+    editing_first_number = False
+    editing_second_number = True
+
+    result_text.config(text="")
     chosen_method = "divide"
 
 def set_method_to_add():
@@ -233,6 +238,13 @@ def minus():
     global result
     result = float(num_1) - float(num_2)
 
+def divide():
+    global num_1
+    global num_2
+    global result
+    result = float(num_1) / float(num_2)
+
+
 
 def equals():
     global result
@@ -246,6 +258,9 @@ def equals():
         result_text.config(text=str(result))
     if chosen_method == "minus":
         minus()
+        result_text.config(text=str(result))
+    if chosen_method == "divide":
+        divide()
         result_text.config(text=str(result))
 
 
