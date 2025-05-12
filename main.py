@@ -12,7 +12,6 @@ root.title("Py-Calculator")
 root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 root.resizable(width=False, height=False)
 
-num = 1
 
 # Variables
 num_1 = ""
