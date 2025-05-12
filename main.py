@@ -12,6 +12,7 @@ root.title("Py-Calculator")
 root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 root.resizable(width=False, height=False)
 
+
 # Variables
 num_1 = ""
 num_2 = ""
@@ -198,7 +199,6 @@ def set_method_to_divide():
 
 def set_method_to_add():
     global chosen_method
-    global num_1
     global editing_first_number
     global editing_second_number
     editing_first_number = False
@@ -210,7 +210,13 @@ def set_method_to_add():
 
 def set_method_to_minus():
     global chosen_method
+    global editing_first_number
+    global editing_second_number
+    editing_first_number = False
+    editing_second_number = True
     chosen_method = "minus"
+
+    result_text.config(text="")
 
 def set_method_to_times():
     global chosen_method
@@ -220,6 +226,12 @@ def add():
     global num_1
     global result
     result = float(num_1) + float(num_2)
+
+def minus():
+    global num_1
+    global num_2
+    global result
+    result = float(num_1) - float(num_2)
 
 
 def equals():
@@ -231,6 +243,9 @@ def equals():
 
     if chosen_method == "add":
         add()
+        result_text.config(text=str(result))
+    if chosen_method == "minus":
+        minus()
         result_text.config(text=str(result))
 
 
