@@ -1,4 +1,4 @@
 # Py-Calculator
 Python Calculator
 
-Currently in 0.5.0-Alpha
+Currently in 0.6.0-Alpha
