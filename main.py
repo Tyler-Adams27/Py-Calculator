@@ -225,6 +225,12 @@ def set_method_to_minus():
 
 def set_method_to_times():
     global chosen_method
+    global editing_first_number
+    global editing_second_number
+    editing_first_number = False
+    editing_second_number = True
+
+    result_text.config(text="")
     chosen_method = "times"
 def add():
     global num_2
@@ -244,6 +250,13 @@ def divide():
     global result
     result = float(num_1) / float(num_2)
 
+def multiply():
+    global num_1
+    global num_2
+    global result
+    result = float(num_1) * float(num_2)
+
+
 
 
 def equals():
@@ -261,6 +274,9 @@ def equals():
         result_text.config(text=str(result))
     if chosen_method == "divide":
         divide()
+        result_text.config(text=str(result))
+    if chosen_method == "times":
+        multiply()
         result_text.config(text=str(result))
 
 
