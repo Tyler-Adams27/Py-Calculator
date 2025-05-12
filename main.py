@@ -202,6 +202,17 @@ def set_method_to_divide():
     result_text.config(text="")
     chosen_method = "divide"
 
+def set_method_to_percent():
+    global chosen_method
+    global editing_first_number
+    global editing_second_number
+    editing_first_number = False
+    editing_second_number = True
+
+    result_text.config(text="")
+    chosen_method = "percent"
+
+
 def set_method_to_add():
     global chosen_method
     global editing_first_number
@@ -256,6 +267,14 @@ def multiply():
     global result
     result = float(num_1) * float(num_2)
 
+def percent():
+    global num_1
+    global num_2
+    global result
+    result = float(num_1) * float(num_2) / 100
+
+
+
 
 
 
@@ -268,17 +287,17 @@ def equals():
 
     if chosen_method == "add":
         add()
-        result_text.config(text=str(result))
     if chosen_method == "minus":
         minus()
-        result_text.config(text=str(result))
     if chosen_method == "divide":
         divide()
-        result_text.config(text=str(result))
     if chosen_method == "times":
         multiply()
-        result_text.config(text=str(result))
+    if chosen_method == "percent":
+        percent()
 
+
+    result_text.config(text=str(result))
 
 
 
@@ -344,7 +363,7 @@ ac_button.place(relx=0, rely=0.64, anchor=tk.SW)
 change_sign_button = tk.Button(root, text="+/-", font=("Nunito Sans", 10), height=3, width=10)
 change_sign_button.place(relx=0.25, rely=0.64, anchor=tk.SW)
 
-percent_button = tk.Button(root, text="%",  font=("Nunito Sans", 10),height=3, width=10)
+percent_button = tk.Button(root, text="%",  font=("Nunito Sans", 10),height=3, width=10, command=set_method_to_percent)
 percent_button.place(relx=0.5, rely=0.64, anchor=tk.SW)
 
 divide_button = tk.Button(root, text="÷", font=("Nunito Sans", 10), height=3, width=10, command=set_method_to_divide)
