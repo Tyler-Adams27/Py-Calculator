@@ -20,7 +20,7 @@ chosen_method = ""
 editing_first_number = True
 editing_second_number = False
 result = 0
-result_text = Label(root, text="",width=50,height=30)
+result_text = Label(root, text="",width=45,height=25)
 result_text.place(rely=0)
 
 def add_one_to_str():
