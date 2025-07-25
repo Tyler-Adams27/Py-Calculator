@@ -3,4 +3,6 @@ Python Calculator
 
 Currently in 0.7.0-Alpha
 
-Not gonna touch this anymore for now as of 12.05.25
+KNOWN BUGS:
+
+Upon user pressing the "-" button more then once, the input will keep adding "-" for as long as the user presses it. This also means that once the user uses a negative number they cannot go back to positive.
