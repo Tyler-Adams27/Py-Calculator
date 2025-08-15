@@ -246,20 +246,18 @@ def flip_positive():
     global is_negative
     if editing_first_number and is_negative == True:
         num_1 = num_1.replace("-", "")
-        is_negative == False
+        is_negative = False
         result_text.config(text=num_1)
     else:
         num_2 = num_2.replace("-", "")
         is_negative == False
-        resulte_text.config(text=num_2)
+        result_text.config(text=num_2)
 def determine():
     global is_negative
     if is_negative == True:
         flip_positive()
-        is_negative = False
     else:
         flip_negative()
-        is_negative = True
 # Mathematical Functions
 def add():
     global num_2
