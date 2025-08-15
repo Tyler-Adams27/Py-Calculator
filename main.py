@@ -12,6 +12,7 @@ root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 root.resizable(width=False, height=False)
 
 # Variables
+is_negative = False
 num_1 = ""
 num_2 = ""
 has_period_1 = False
@@ -230,13 +231,35 @@ def set_method_to_times():
 def flip_negative():
     global num_1
     global num_2
-    if editing_first_number:
+    global is_negative
+    if editing_first_number and is_negative == False:
         num_1 = "".join("-"+ num_1)
+        is_negative = True
         result_text.config(text=num_1)
     else:
         num_2 = "".join("-"+ num_2)
+        is_negative = True
         result_text.config(text=num_2)
-
+def flip_positive():
+    global num_1
+    global num_2
+    global is_negative
+    if editing_first_number and is_negative == True:
+        num_1 = num_1.replace("-", "")
+        is_negative == False
+        result_text.config(text=num_1)
+    else:
+        num_2 = num_2.replace("-", "")
+        is_negative == False
+        resulte_text.config(text=num_2)
+def determine():
+    global is_negative
+    if is_negative == True:
+        flip_positive()
+        is_negative = False
+    else:
+        flip_negative()
+        is_negative = True
 # Mathematical Functions
 def add():
     global num_2
@@ -344,7 +367,7 @@ times_button.place(relx=0.75, rely=0.725, anchor=tk.SW)
 ac_button = tk.Button(root, text="AC", font=("Nunito Sans", 10), height=3, width=10, command=clear_all_numbers)
 ac_button.place(relx=0, rely=0.64, anchor=tk.SW)
 
-change_sign_button = tk.Button(root, text="+/-", font=("Nunito Sans", 10), height=3, width=10, command=flip_negative)
+change_sign_button = tk.Button(root, text="+/-", font=("Nunito Sans", 10), height=3, width=10, command=determine)
 change_sign_button.place(relx=0.25, rely=0.64, anchor=tk.SW)
 
 percent_button = tk.Button(root, text="%",  font=("Nunito Sans", 10),height=3, width=10, command=set_method_to_percent)
